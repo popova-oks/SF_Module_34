@@ -12,10 +12,8 @@ concept ComplexConcept = requires(T t) {
 class Converter {
   public:
     Converter() : _num{} {};
-    void set_num(int num) { _num = long(num); }
     void set_num(long num) { _num = num; }
-    long get_num() { return _num; }
-
+   
     long hash() { return _num; }
     std::string toString() const { return std::to_string(_num); }
 
