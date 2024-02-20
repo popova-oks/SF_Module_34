@@ -12,13 +12,13 @@ concept ComplexConcept = requires(T t) {
 class Converter {
   public:
     Converter() : _num{} {};
-    void set_num(long num) { _num = num; }
+    void set_num(double num) { _num = num; }
    
-    long hash() { return _num; }
+    long hash() { return long(_num); }
     std::string toString() const { return std::to_string(_num); }
 
   private:
-    long _num;
+    double _num;
 };
 
 using value = std::variant<long, std::string, std::monostate>;
@@ -46,13 +46,13 @@ void printResult(const value &v) {
 
 int main() {
     std::cout << "Enter long number: ";
-    long num;
+    double num;
     std::cin >> num;
 
     Converter c;
     c.set_num(num);
 
-    std::cout << "Enter mode: 1 - the number (long), 2 - the string ";
+    std::cout << "Enter mode: 1 (convert to long) or 2 (convert to string) : ";
     int mode;
     std::cin >> mode;
 
